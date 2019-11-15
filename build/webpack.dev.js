@@ -1,7 +1,7 @@
 // 改写配置之后,需要重启服务器(npm run start)
 const webpack = require('webpack');
-const merge = require('webpack-merge');
-const commonConfig = require('./webpack.common');
+// const merge = require('webpack-merge');
+// const commonConfig = require('./webpack.common');
 
 const devConfig = {
 
@@ -91,4 +91,6 @@ const devConfig = {
     // path: path.resolve(__dirname, '../dist') //出口路径,必须写绝对路径,__dirname为根目录
   },
 }
-module.exports = merge(commonConfig, devConfig);
+// 不适用merge和commonConfig, 直接导出devConfig
+// module.exports = merge(commonConfig, devConfig);
+module.exports = devConfig;

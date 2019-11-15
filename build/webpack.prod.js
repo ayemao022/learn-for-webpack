@@ -1,6 +1,6 @@
 // 改写配置之后,需要重启服务器(npm run start)
-const merge = require("webpack-merge");
-const commonConfig = require('./webpack.common');
+// const merge = require("webpack-merge");
+// const commonConfig = require('./webpack.common');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
@@ -79,6 +79,7 @@ const prodConfig = {
 	}
 }
 
-module.exports = merge(commonConfig, prodConfig);
+// module.exports = merge(commonConfig, prodConfig);
+module.exports = prodConfig;
 
 
