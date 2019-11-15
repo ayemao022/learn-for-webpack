@@ -19,7 +19,7 @@ const prodConfig = {
   // eval: 是打包速度最快的,将代码用eval包裹起来,但可能不全面
   // 开发环境: cheap-module-eval-source-map
   // 生产环境(线上环境): cheap-module-source-map
-	devtool: "cheap-module-source-map",
+	// devtool: "cheap-module-source-map",
 	module: {
 		rules: [{
 			test: /\.css$/,
@@ -68,7 +68,15 @@ const prodConfig = {
 			// 没在html中直接引入, 而在其他时候被间接引入
 			chunkFilename: '[name].chunk.css'
 		})
-	]
+	],
+
+	// 出口配置
+	output: {
+		// [name]为占位符,当存在多个入口文件时,生成的js会以entry中的属性名为准,插件HtmlWebpackPlugin会将所有js都引入到生成的html中
+		// [contenthash]也为一个占位符, 当文件内容有变化时, 文件名就会有变化
+		filename: '[name].[contenthash].js',
+		chunkFilename: '[name].[contenthash].js'
+	}
 }
 
 module.exports = merge(commonConfig, prodConfig);

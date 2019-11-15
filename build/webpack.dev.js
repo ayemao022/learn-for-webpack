@@ -79,7 +79,16 @@ const devConfig = {
     // 在css-loader底层已经自动实现HMR功能
     // 同理: vue-loader底层也自动实现HMR
     new webpack.HotModuleReplacementPlugin(),
-  ],
-
+	],
+	
+	// 出口配置
+  output: {
+    // publicPath: './', // 在打包后的资源路径前,添加的一个根路径,如'http://cdn.com.cn'
+    // filename: 'bundle.js', //出口文件名默认为main.js,此时改为bundle.js
+    // [name]为占位符,当存在多个入口文件时,生成的js会以entry中的属性名为准,插件HtmlWebpackPlugin会将所有js都引入到生成的html中
+		filename: '[name].js',
+		chunkFilename: '[name].js',
+    // path: path.resolve(__dirname, '../dist') //出口路径,必须写绝对路径,__dirname为根目录
+  },
 }
 module.exports = merge(commonConfig, devConfig);
