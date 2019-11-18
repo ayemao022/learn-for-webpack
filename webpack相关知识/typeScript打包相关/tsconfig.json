@@ -1,0 +1,13 @@
+// 如果使用ts-loader, 必须要有tsconfig.json配置
+{
+	"compilerOptions": {
+		// 在webpack的 output中已经配置了出口, 这里可以再配置
+		"outDir": "./dist",
+		// 在ts中, 使用es6的方式引入
+		"module": "es6", 
+		// 打包生成的文件是es5支持的
+		"target": "es5",
+		// 运行在ts的文件里, 引入其他js文件
+		"allowJs": true
+	}
+}
