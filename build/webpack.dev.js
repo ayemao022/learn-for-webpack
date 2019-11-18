@@ -91,6 +91,7 @@ const devConfig = {
     // path: path.resolve(__dirname, '../dist') //出口路径,必须写绝对路径,__dirname为根目录
   },
 }
-// 不适用merge和commonConfig, 直接导出devConfig
 // module.exports = merge(commonConfig, devConfig);
+
+// 不使用merge和commonConfig, 直接导出devConfig
 module.exports = devConfig;

@@ -3,6 +3,7 @@
 // const commonConfig = require('./webpack.common');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const prodConfig = {
 
@@ -67,6 +68,12 @@ const prodConfig = {
 			filename: '[name].css',
 			// 没在html中直接引入, 而在其他时候被间接引入
 			chunkFilename: '[name].chunk.css'
+		}),
+
+		// PWA技术(google提供了一个封装好的插件) 在服务器断网的时候, 还可以访问网页, 使用本地缓存
+		new WorkboxPlugin.GenerateSW({
+			clientsClaim: true,
+			skipWaiting: true
 		})
 	],
 

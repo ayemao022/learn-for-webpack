@@ -19,18 +19,20 @@
     "并不会生成dist目录": "打包后的文件在内存里,有效提升打包速度,加快开发,如果需要打包后的文件,还是需要npm run build",
     "分离开发与生产环境": "将原始的start指令更改成dev",
     "dev": "webpack-dev-server --config ./build/webpack.common.js",
-		"生产环境": "不需要用到weboack-dev-serve",
-		"全局变量--env": "--env.production/ --env production='abc' 等可以以向内部传递一个变量, 内部通过变量来区分打包逻辑",
+    "生产环境": "不需要用到weboack-dev-serve",
+    "全局变量--env": "--env.production/ --env production='abc' 等可以以向内部传递一个变量, 内部通过变量来区分打包逻辑",
     "build": "webpack --env.production --config ./build/webpack.common.js",
     "可以监控打包的代码是否发生变化三": "下载webpack-dev-middleware和express,通过express开启自建的服务器,并编写server.js,需要手动刷新,比webpack-dev-server麻烦",
     "server": "node server.js",
     "使用开发环境打包": "不使用webpack-dev-server,可以生产dist目录",
     "dev-build": "webpack --config ./build/webpack.common.js",
     "下面的命令": "在打包后会在根目录生成stats.json,里面描述了打包的详细信息,如生成时间/生成chunks数/chunks之间的关系等",
-    "dev-build-detail": "webpack --profile --json > stats.json --config ./build/webpack.dev.js"
+    "dev-build-detail": "webpack --profile --json > stats.json --config ./build/webpack.dev.js",
+    "下面代码表示": "会在本地用http-server启动服务器, 打开dist下面的文件",
+    "start": "http-server ./dist"
   },
   "keywords": [],
-  "author": "aye",
+  "author": "ayemao",
   "license提示": "MIT为开源",
   "license": "ISC",
   "devDependencies": {
@@ -46,6 +48,7 @@
     "express": "^4.17.1",
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.11.1",
     "imports-loader": "^0.8.0",
     "jquery": "^3.4.1",
     "mini-css-extract-plugin": "^0.8.0",
@@ -59,7 +62,8 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-dev-server": "^3.5.1",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",

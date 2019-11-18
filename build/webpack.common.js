@@ -37,10 +37,12 @@ const commonConfig = {
 			// 使用多个loader, 使用use, 后面跟一个数组
 			use: [{
 				loader: 'babel-loader',
-			},{
-				// 任意模块的this都指向模块本身, 当这样写之后, 可以将this指向window
-				loader: 'imports-loader?this=>window'
-			}],
+			},
+			// {
+			// 	// 任意模块的this都指向模块本身, 当这样写之后, 可以将this指向window
+			// 	loader: 'imports-loader?this=>window'
+			// }
+		],
 
       // 还需要借助 @babel/preset-env做语法转换(但是不够全面,例如promise,map()等就不行)
       // 再借助 @babel/polyfill,将所需变量(没有转化的promise,map等变量或函数)进行补充 PS: @babel/polyfill直接在入口文件中导入即可
@@ -105,11 +107,11 @@ const commonConfig = {
 		// 由于webpack使用模块化打包, 所以第三方资源包如果使用了jquery等外部资源, 但并没有在自己的资源包里引入, 该第三方资源就不可用了
 		// 哪怕自己在同一个入口中把所有的资源都导入, 也是不可用的
 		// 为此, webpack自带一个插件, 以下配置就可以保证, 在第三方资源使用了'$'符号时, 使用全局的jquery.
-		new webpack.ProvidePlugin({
-			$: 'jquery',
-			_: 'lodash',
-			_join: ['lodash', 'join'], //如果遇到'_join', 则去lodash中查找join方法 , 并命名为_join
-		})
+		// new webpack.ProvidePlugin({
+		// 	$: 'jquery',
+		// 	_: 'lodash',
+		// 	_join: ['lodash', 'join'], //如果遇到'_join', 则去lodash中查找join方法 , 并命名为_join
+		// })
 	],
 	
   optimization: {
@@ -219,3 +221,6 @@ module.exports = (env) => {
 		return merge(commonConfig, devConfig);
 	}
 }
+
+// PWA 可以在本地有缓存, 当服务器挂了以后, 可以先使用本地缓存
+// 只有上线的代码, 才需要使用PWA技术, 本地不用考虑服务器挂不挂的问题
