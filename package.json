@@ -70,7 +70,7 @@
     "@babel/runtime": "^7.4.5",
     "@babel/runtime-corejs2": "^7.4.5",
     "core-js": "^2.6.9",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
